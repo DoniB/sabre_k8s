@@ -1,0 +1,23 @@
+language: minimal
+
+env:
+  global:
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_a287d8abb4dc_key -iv $encrypted_a287d8abb4dc_iv -in service-account.json.enc -out service-account.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
+#  - gcloud config set project multi-k8s-232503
+#  - gcloud config set compute/zone us-central1-a
+#  - gcloud container clusters get-credentials multi-cluster
+
+script:
+  - echo "No test to perform"
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
