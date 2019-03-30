@@ -13,7 +13,7 @@ spec:
       - cadereceita.com
         secretName: cadereceita-com
   rules:
-    - host: caderecieta.com
+    - host: cadereceita.com
       http:
       paths:
         - path: /
