@@ -10,9 +10,13 @@ spec:
   commonName: cadereceita.com.br
   dnsNames:
     - cadereceita.com.br
+    - www.cadereceita.com.br
+    - sabre.cadereceita.com.br
   acme:
     config:
       - http01:
           ingressClass: nginx
         domains:
           - cadereceita.com.br
+          - www.cadereceita.com.br
+          - sabre.cadereceita.com.br
