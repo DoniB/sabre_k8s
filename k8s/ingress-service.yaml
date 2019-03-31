@@ -12,9 +12,25 @@ spec:
   tls:
     - hosts:
         - cadereceita.com
+        - www.cadereceita.com
+        - sabre.cadereceita.com
       secretName: cadereceita-com
   rules:
     - host: cadereceita.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 80
+    - host: www.cadereceita.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 80
+    - host: sabre.cadereceita.com
       http:
         paths:
           - path: /
