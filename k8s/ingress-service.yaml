@@ -4,7 +4,7 @@ metadata:
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /
+#    nginx.ingress.kubernetes.io/rewrite-target: /
     certmanager.k8s.io/cluster-issuer: 'letsencrypt-prod'
     nginx.ingress.kubernets.io/ssl-redirect: 'true'
     certmanager.k8s.io/acme-challenge-type: http01
@@ -23,6 +23,10 @@ spec:
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 80
+          - path: /api/
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 3000
     - host: www.cadereceita.com
       http:
         paths:
@@ -30,6 +34,10 @@ spec:
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 80
+          - path: /api/
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 3000
     - host: sabre.cadereceita.com
       http:
         paths:
@@ -37,7 +45,7 @@ spec:
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 80
-#          - path: /api/
-#            backend:
-#              serviceName: server-cluster-ip-service
-#              servicePort: 5000
+          - path: /api/
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 3000
