@@ -32,3 +32,8 @@ spec:
                 secretKeyRef:
                   name: railsmasterkey
                   key: RAILS_MASTER_KEY
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              valueFrom:
+                secretKeyRef:
+                  name: googleapplicationcredentials
+                  key: google_storage_key.txt
